@@ -1,0 +1,381 @@
+/* =================================================================
+   BASE (Escritorio / Laptop) - Funciona desde 1024px en adelante
+   ================================================================= */
+.app-layout {
+    height: auto !important;       /* Deja que crezca infinitamente hacia abajo */
+    min-height: 100vh;             /* Al menos del tamaño de la pantalla */
+    overflow-y: visible !important;/* Permite que el navegador maneje el scroll */
+    display: block !important;     /* Cambiamos Flex por Bloque normal para evitar conflictos */
+  }
+
+.main-content-wrapper {
+    max-width: none; /* Aseguramos de nuevo que NO haya límite */
+    margin-left: 80px;
+    box-shadow: none; /* Quitamos la sombra de "hoja centrada" */
+  }
+
+/* SIDEBAR ESCRITORIO */
+.sidebar-container {
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 80px; /* Ancho colapsado */
+  background: white;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 10px;
+  box-shadow: 2px 0 10px rgba(0,0,0,0.05);
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1000;
+  overflow-x: hidden;
+}
+
+.sidebar-container:hover {
+  width: 260px; /* Ancho expandido */
+  padding-left: 15px;
+  align-items: flex-start;
+}
+
+/* LOGO */
+.sidebar-logo {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 15px;
+  margin-bottom: 20px;
+  width: 100%;
+  font-size: 32px;
+  transition: transform 0.3s;
+}
+
+.sidebar-container:hover .sidebar-logo {
+  transform: scale(1.1);
+}
+
+/* ITEMS DEL MENÚ */
+.menu-item {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 48px;
+  margin-bottom: 8px;
+  border-radius: 12px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: #64748b;
+  text-decoration: none;
+  transition: all 0.2s;
+  padding: 0;
+  justify-content: center; /* Centrado cuando colapsado */
+  position: relative;
+}
+
+.menu-item .icon { font-size: 22px; min-width: 50px; display: flex; justify-content: center; }
+.menu-item .label { display: none; white-space: nowrap; font-weight: 500; font-size: 14px; }
+
+/* HOVER: Expandir y mostrar texto */
+.menu-item:hover { background-color: #e0f2fe; color: #0284c7; }
+.sidebar-container:hover .menu-item { justify-content: flex-start; padding-left: 10px; }
+.sidebar-container:hover .menu-item .label { display: block; animation: fadeIn 0.3s forwards; }
+
+/* ESPACIADORES Y UTILIDADES */
+.sidebar-spacer { flex-grow: 1; }
+.sidebar-profile { margin-top: 10px; padding-top: 15px; border-top: 1px solid #e2e8f0; width: 100%; }
+
+/* PERFIL */
+.profile-content { display: flex; align-items: center; justify-content: center; gap: 10px; }
+.sidebar-container:hover .profile-content { justify-content: flex-start; }
+.avatar { width: 40px; height: 40px; background: #3b82f6; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; flex-shrink: 0; }
+.user-info { display: none; flex-direction: column; }
+.sidebar-container:hover .user-info { display: flex; }
+.user-name { font-size: 14px; font-weight: bold; color: #1e293b; margin: 0; }
+.user-role { font-size: 12px; color: #64748b; margin: 0; }
+.logout-btn { display: none; background: none; border: none; cursor: pointer; margin-left: auto; }
+.sidebar-container:hover .logout-btn { display: block; }
+
+/* NOTIFICACIONES */
+.notification-badge { position: absolute; top: 5px; right: 15px; background: #ef4444; color: white; font-size: 10px; width: 16px; height: 16px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; }
+.sidebar-container:hover .notification-badge { right: 20px; }
+
+/* HEADER PRINCIPAL */
+.dashboard-header-modern {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.header-left-group { display: flex; align-items: center; gap: 15px; }
+.header-welcome h1 { font-size: 24px; color: #1e293b; margin: 0 0 5px 0; font-weight: 700; }
+.header-welcome p { margin: 0; color: #64748b; font-size: 14px; }
+.header-date { display: flex; align-items: center; gap: 8px; background: white; padding: 8px 16px; border-radius: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.03); color: #3b82f6; font-weight: 500; font-size: 14px; }
+
+/* GRID DE PANELES */
+.panels-grid {
+  display: flex;
+  gap: 20px;
+  width: 100%; /* Forzar a que ocupe todo el contenedor */
+  height: calc(100vh - 120px);
+  min-height: 500px;
+}
+
+/* BOTONES MÓVILES (Ocultos en PC) */
+.mobile-menu-btn, .mobile-close-btn, .mobile-backdrop { display: none; }
+
+/* ANIMACIÓN */
+@keyframes fadeIn { from { opacity: 0; transform: translateX(-5px); } to { opacity: 1; transform: translateX(0); } }
+
+/* =================================================================
+   TABLETS Y PANTALLAS MEDIANAS (1024px hacia abajo)
+   ================================================================= */
+@media (max-width: 1024px) {
+  .panels-grid {
+    flex-direction: column; /* Apilar verticalmente */
+    height: auto; /* Altura flexible */
+    gap: 30px;
+  }
+  
+/* Asegurar que los paneles se estiren proporcionalmente */
+.citas-panel { 
+  flex: 1; 
+  min-width: 350px; /* Mínimo para que no se aplaste */
+}
+
+.calendar-panel { 
+  flex: 2.5; /* Le damos más peso al calendario para que aproveche el espacio extra */
+}
+}
+
+/* =================================================================
+   MÓVILES Y TABLETS PEQUEÑAS (768px hacia abajo)
+   ================================================================= */
+@media (max-width: 768px) {
+  /* 1. Ajustar wrapper */
+.main-content-wrapper {
+    height: auto !important;
+    overflow-y: visible !important; /* Ya no recorta el contenido */
+    margin-left: 0 !important;
+    width: 100% !important;
+    flex: none !important;
+  }
+  /* 2. Sidebar Oculto */
+  .sidebar-container {
+    width: 280px;
+    transform: translateX(-100%); /* Escondido a la izquierda */
+    transition: transform 0.3s ease;
+    align-items: flex-start;
+    padding-left: 20px;
+    height: 100vh;
+  }
+
+  /* 3. Sidebar Abierto */
+  .sidebar-container.mobile-open {
+    transform: translateX(0); /* Mostrar */
+    box-shadow: 5px 0 25px rgba(0,0,0,0.2);
+  }
+
+  /* 4. Elementos del Sidebar siempre visibles en móvil */
+  .sidebar-container .menu-item { justify-content: flex-start; padding-left: 0; }
+  .sidebar-container .label { display: block; opacity: 1; }
+  .sidebar-container .user-info { display: flex; margin-left: 10px;}
+  .sidebar-container .profile-content { justify-content: flex-start; }
+
+  /* 5. Botones Móviles */
+  .mobile-menu-btn {
+    display: flex; align-items: center; justify-content: center;
+    background: white; border: 1px solid #e2e8f0; font-size: 24px;
+    width: 40px; height: 40px; border-radius: 8px; cursor: pointer; color: #1e293b;
+  }
+
+  .mobile-close-btn {
+    display: block; position: absolute; top: 15px; right: 15px;
+    background: none; border: none; font-size: 24px; color: #64748b; cursor: pointer; z-index: 1001;
+  }
+
+  /* 6. Fondo Oscuro */
+  .mobile-backdrop {
+    display: block; position: fixed; top: 0; left: 0;
+    width: 100vw; height: 100vh; background: rgba(0,0,0,0.5);
+    z-index: 999; backdrop-filter: blur(2px);
+  }
+  
+  .header-welcome h1 { font-size: 20px; }
+  .header-date span:last-child { display: none; } /* Ocultar fecha larga en celular */
+}
+
+/* =================================================================
+   TVs GIGANTES (Más de 1920px)
+   ================================================================= */
+@media (min-width: 1920px) {
+  .app-layout {
+    justify-content: flex-start; /* Que empiece desde la izquierda */
+    background-color: #f4f6f9;
+  }
+}
+
+
+/* ==================================================
+   MODAL DE NOTIFICACIONES
+   ================================================== */
+
+/* Fondo oscuro transparente */
+.noti-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 10001; /* Encima del sidebar */
+  backdrop-filter: blur(2px);
+  animation: fadeIn 0.2s ease-out;
+}
+
+/* El Modal en sí */
+.noti-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  max-width: 380px;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  z-index: 10002;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  max-height: 80vh;
+}
+
+/* Cabecera */
+.noti-header {
+  padding: 15px 20px;
+  background: #f8fafc;
+  border-bottom: 1px solid #e2e8f0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.noti-header h3 {
+  margin: 0;
+  font-size: 16px;
+  color: #1e3a8a;
+  font-weight: 700;
+}
+
+.noti-close-btn {
+  background: none;
+  border: none;
+  font-size: 18px;
+  color: #64748b;
+  cursor: pointer;
+}
+
+/* Cuerpo con Scroll */
+.noti-body {
+  padding: 10px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+/* Item de Notificación Individual */
+.noti-item {
+  display: flex;
+  gap: 12px;
+  padding: 12px;
+  margin-bottom: 8px;
+  background: white;
+  border-radius: 10px;
+  border: 1px solid #f1f5f9;
+  transition: transform 0.2s;
+}
+
+.noti-item:hover {
+  background: #f8fafc;
+  transform: translateX(2px);
+}
+
+/* Colores según el tipo */
+.noti-item.tipo-cancelacion {
+  border-left: 4px solid #ef4444; /* Rojo */
+  background: rgba(239, 68, 68, 0.02);
+}
+
+.noti-item.tipo-cita {
+  border-left: 4px solid #3b82f6; /* Azul */
+}
+
+.noti-item.tipo-inventario {
+  border-left: 4px solid #f59e0b; /* Amarillo */
+  background: rgba(245, 158, 11, 0.05);
+}
+
+/* Icono */
+.noti-icon {
+  font-size: 20px;
+  display: flex;
+  align-items: flex-start;
+  padding-top: 2px;
+}
+
+/* Textos */
+.noti-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.noti-titulo {
+  font-size: 13px;
+  font-weight: 700;
+  color: #334155;
+}
+
+.noti-mensaje {
+  margin: 0;
+  font-size: 12px;
+  color: #64748b;
+  line-height: 1.4;
+}
+
+.noti-hora {
+  font-size: 10px;
+  color: #94a3b8;
+  margin-top: 4px;
+  font-weight: 500;
+}
+
+/* Estado Vacío */
+.noti-empty {
+  text-align: center;
+  padding: 40px 20px;
+  color: #94a3b8;
+}
+.noti-empty span {
+  display: block;
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+
+/* Footer (Opcional) */
+.noti-footer {
+  padding: 10px;
+  text-align: center;
+  border-top: 1px solid #e2e8f0;
+  background: #f8fafc;
+  color: #64748b;
+  font-size: 11px;
+}
+
+@keyframes slideUp { 
+  from { transform: translate(-50%, -40%); opacity: 0; } 
+  to { transform: translate(-50%, -50%); opacity: 1; } 
+}

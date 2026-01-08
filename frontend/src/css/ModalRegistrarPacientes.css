@@ -1,0 +1,686 @@
+/* ===== MODAL REGISTRAR PACIENTE CSS ===== */
+/* Paleta de colores:
+   - Azul cielo: #87CEEB
+   - Blanco: #FFFFFF
+   - Azul marino: #1E3A8A 
+   - Gris claro: #F8FAFC
+   - Verde agua: #06D6A0
+*/
+
+/* Variables CSS para el modal */
+:root {
+  --modal-shadow: 0 25px 50px rgba(30, 58, 138, 0.25);
+  --modal-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ===== OVERLAY DEL MODAL ===== */
+.modal-registrar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(30, 58, 138, 0.75); /* Azul marino transparente */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  backdrop-filter: blur(8px);
+  animation: modalOverlayFadeIn 0.3s ease-out;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+@keyframes modalOverlayFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* ===== CONTENEDOR DEL MODAL ===== */
+.modal-registrar-container {
+  background: #FFFFFF; /* Blanco */
+  border-radius: 20px;
+  box-shadow: var(--modal-shadow);
+  width: 100%;
+  max-width: 500px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: modalSlideIn 0.3s ease-out;
+  border: 2px solid #06D6A0; /* Verde agua */
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* ===== HEADER DEL MODAL ===== */
+.modal-registrar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 28px;
+  background: linear-gradient(135deg, #06D6A0 0%, #87CEEB 100%); /* Verde agua a azul cielo */
+  color: white;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.modal-registrar-title {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  letter-spacing: -0.3px;
+}
+
+.modal-registrar-close-btn {
+  width: 36px;
+  height: 36px;
+  border: none;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: bold;
+  transition: var(--modal-transition);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.modal-registrar-close-btn:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.1);
+}
+
+.modal-registrar-close-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ===== CONTENIDO DEL MODAL ===== */
+.modal-registrar-content {
+  flex: 1;
+  padding: 28px;
+  overflow-y: auto;
+  background: #FFFFFF; /* Blanco */
+}
+
+/* ===== ERROR GENERAL ===== */
+.error-general {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px;
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  border-radius: 12px;
+  color: #dc2626;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 24px;
+  animation: errorSlideIn 0.3s ease-out;
+}
+
+.error-icon {
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+@keyframes errorSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== FORMULARIO ===== */
+.formulario-registrar {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.campo-grupo {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.campo-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 600;
+  color: #1E3A8A; /* Azul marino */
+}
+
+.label-texto {
+  flex: 1;
+}
+
+.label-icon {
+  font-size: 16px;
+  opacity: 0.8;
+}
+
+.campo-input,
+.campo-select {
+  width: 100%;
+  padding: 14px 16px;
+  border: 2px solid #F8FAFC; /* Gris claro */
+  border-radius: 12px;
+  font-size: 15px;
+  background: white;
+  color: #1E3A8A; /* Azul marino */
+  transition: var(--modal-transition);
+  box-sizing: border-box;
+  font-family: inherit;
+}
+
+.campo-input:focus,
+.campo-select:focus {
+  outline: none;
+  border-color: #06D6A0; /* Verde agua */
+  box-shadow: 0 0 0 3px rgba(6, 214, 160, 0.1);
+}
+
+.campo-input::placeholder {
+  color: #87CEEB; /* Azul cielo */
+  opacity: 0.8;
+}
+
+.campo-input:disabled,
+.campo-select:disabled {
+  background: #F8FAFC;
+  color: #87CEEB;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+/* Estados de error */
+.campo-error {
+  border-color: #dc2626 !important;
+  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1) !important;
+}
+
+.mensaje-error {
+  font-size: 13px;
+  color: #dc2626;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  animation: errorSlideIn 0.3s ease-out;
+}
+
+.mensaje-error::before {
+  content: '⚠️';
+  font-size: 12px;
+}
+
+/* ===== AYUDA DE CAMPO ===== */
+.campo-ayuda {
+  font-size: 12px;
+  color: #87CEEB; /* Azul cielo */
+  font-style: italic;
+  margin-top: 4px;
+}
+
+/* ===== INFORMACIÓN TEMPORAL ===== */
+.info-temporal {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 16px;
+  background: rgba(6, 214, 160, 0.1); /* Verde agua transparente */
+  border: 1px solid rgba(6, 214, 160, 0.3);
+  border-radius: 12px;
+  font-size: 14px;
+  color: #1E3A8A; /* Azul marino */
+  line-height: 1.5;
+  margin-top: 8px;
+}
+
+.info-icon {
+  font-size: 16px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.info-texto strong {
+  color: #06D6A0; /* Verde agua */
+  font-weight: 700;
+}
+
+/* ===== FOOTER DEL MODAL ===== */
+.modal-registrar-footer {
+  display: flex;
+  gap: 16px;
+  padding: 24px 28px;
+  background: #F8FAFC; /* Gris claro */
+  border-top: 1px solid rgba(6, 214, 160, 0.2);
+  justify-content: flex-end;
+}
+
+.btn-cancelar,
+.btn-registrar {
+  padding: 14px 24px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: var(--modal-transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-width: 140px;
+  white-space: nowrap;
+}
+
+.btn-cancelar {
+  background: #FFFFFF; /* Blanco */
+  color: #1E3A8A; /* Azul marino */
+  border: 2px solid #F8FAFC; /* Gris claro */
+}
+
+.btn-cancelar:hover:not(:disabled) {
+  background: #F8FAFC;
+  border-color: #87CEEB;
+  color: #87CEEB;
+  transform: translateY(-1px);
+}
+
+.btn-registrar {
+  background: linear-gradient(135deg, #06D6A0 0%, #1E3A8A 100%); /* Verde agua a azul marino */
+  color: white;
+  box-shadow: 0 4px 12px rgba(6, 214, 160, 0.3);
+}
+
+.btn-registrar:hover:not(:disabled) {
+  background: linear-gradient(135deg, #06D6A0 0%, #87CEEB 100%); /* Verde agua a azul cielo */
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(6, 214, 160, 0.4);
+}
+
+.btn-cancelar:disabled,
+.btn-registrar:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ===== SPINNER DE CARGA ===== */
+.loading-spinner-small {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top: 2px solid white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+/* Tablets (768px - 1024px) */
+@media (max-width: 1024px) {
+  .modal-registrar-container {
+    max-width: 480px;
+  }
+  
+  .modal-registrar-header,
+  .modal-registrar-content,
+  .modal-registrar-footer {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
+
+/* Tablets pequeñas (600px - 768px) */
+@media (max-width: 768px) {
+  .modal-registrar-overlay {
+    padding: 16px;
+  }
+  
+  .modal-registrar-container {
+    max-width: 100%;
+    max-height: 95vh;
+  }
+  
+  .modal-registrar-header {
+    padding: 20px;
+  }
+  
+  .modal-registrar-title {
+    font-size: 18px;
+  }
+  
+  .modal-registrar-content {
+    padding: 20px;
+  }
+  
+  .modal-registrar-footer {
+    padding: 20px;
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .btn-cancelar,
+  .btn-registrar {
+    width: 100%;
+    min-width: auto;
+  }
+}
+
+/* Móviles grandes (480px - 600px) */
+@media (max-width: 600px) {
+  .modal-registrar-overlay {
+    padding: 12px;
+  }
+  
+  .modal-registrar-container {
+    border-radius: 16px;
+  }
+  
+  .modal-registrar-header,
+  .modal-registrar-content,
+  .modal-registrar-footer {
+    padding: 16px;
+  }
+  
+  .modal-registrar-title {
+    font-size: 16px;
+  }
+  
+  .modal-registrar-close-btn {
+    width: 32px;
+    height: 32px;
+    font-size: 16px;
+  }
+  
+  .formulario-registrar {
+    gap: 16px;
+  }
+  
+  .campo-input,
+  .campo-select {
+    padding: 12px 14px;
+    font-size: 14px;
+  }
+  
+  .campo-label {
+    font-size: 13px;
+  }
+  
+  .btn-cancelar,
+  .btn-registrar {
+    padding: 12px 20px;
+    font-size: 13px;
+  }
+}
+
+/* Móviles pequeños (hasta 480px) */
+@media (max-width: 480px) {
+  .modal-registrar-overlay {
+    padding: 8px;
+  }
+  
+  .modal-registrar-container {
+    border-radius: 12px;
+    max-height: 98vh;
+  }
+  
+  .modal-registrar-header,
+  .modal-registrar-content,
+  .modal-registrar-footer {
+    padding: 12px;
+  }
+  
+  .modal-registrar-title {
+    font-size: 15px;
+    gap: 8px;
+  }
+  
+  .modal-registrar-close-btn {
+    width: 28px;
+    height: 28px;
+    font-size: 14px;
+  }
+  
+  .formulario-registrar {
+    gap: 14px;
+  }
+  
+  .campo-input,
+  .campo-select {
+    padding: 10px 12px;
+    font-size: 14px;
+    border-radius: 8px;
+  }
+  
+  .campo-label {
+    font-size: 12px;
+  }
+  
+  .label-icon {
+    font-size: 14px;
+  }
+  
+  .error-general,
+  .info-temporal {
+    padding: 12px;
+    gap: 8px;
+    font-size: 13px;
+  }
+  
+  .btn-cancelar,
+  .btn-registrar {
+    padding: 10px 16px;
+    font-size: 12px;
+    border-radius: 8px;
+  }
+  
+  .mensaje-error {
+    font-size: 12px;
+  }
+  
+  .campo-ayuda {
+    font-size: 11px;
+  }
+}
+
+/* ===== SCROLL PERSONALIZADO ===== */
+.modal-registrar-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.modal-registrar-content::-webkit-scrollbar-track {
+  background: rgba(6, 214, 160, 0.1);
+  border-radius: 3px;
+}
+
+.modal-registrar-content::-webkit-scrollbar-thumb {
+  background: rgba(6, 214, 160, 0.3);
+  border-radius: 3px;
+}
+
+.modal-registrar-content::-webkit-scrollbar-thumb:hover {
+  background: rgba(6, 214, 160, 0.5);
+}
+
+/* ===== MEJORAS DE ACCESIBILIDAD ===== */
+.campo-input:focus,
+.campo-select:focus,
+.btn-cancelar:focus,
+.btn-registrar:focus,
+.modal-registrar-close-btn:focus {
+  outline: 2px solid rgba(6, 214, 160, 0.5);
+  outline-offset: 2px;
+}
+
+/* Estados de hover mejorados */
+.campo-input:hover:not(:disabled):not(:focus),
+.campo-select:hover:not(:disabled):not(:focus) {
+  border-color: #87CEEB; /* Azul cielo */
+}
+
+/* Mejoras para usuarios con preferencias de movimiento reducido */
+@media (prefers-reduced-motion: reduce) {
+  .modal-registrar-overlay,
+  .modal-registrar-container,
+  .error-general,
+  .mensaje-error {
+    animation: none;
+  }
+  
+  .loading-spinner-small {
+    animation: none;
+  }
+  
+  .btn-cancelar:hover,
+  .btn-registrar:hover,
+  .modal-registrar-close-btn:hover {
+    transform: none;
+  }
+}
+
+/* ===== ESTADOS ESPECIALES ===== */
+/* Cuando el formulario está enviando */
+.modal-registrar-container.enviando {
+  pointer-events: none;
+}
+
+.modal-registrar-container.enviando .modal-registrar-content {
+  opacity: 0.7;
+}
+
+/* Estados de validación exitosa */
+.campo-input.valido {
+  border-color: #06D6A0;
+}
+
+.campo-select.valido {
+  border-color: #06D6A0;
+}
+
+/* Animación de éxito */
+.exito-animacion {
+  animation: exitoFlash 0.6s ease-out;
+}
+
+@keyframes exitoFlash {
+  0% { background-color: rgba(6, 214, 160, 0.1); }
+  50% { background-color: rgba(6, 214, 160, 0.3); }
+  100% { background-color: transparent; }
+}
+
+/* ===== MEJORAS DE UX ===== */
+/* Indicador de campo requerido */
+.campo-label .label-texto::after {
+  content: '';
+}
+
+.campo-label[data-required="true"] .label-texto::after {
+  content: ' *';
+  color: #dc2626;
+  font-weight: 700;
+}
+
+/* Indicador visual de progreso de formulario */
+.progreso-formulario {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 20px;
+}
+
+.progreso-step {
+  flex: 1;
+  height: 3px;
+  background: #F8FAFC;
+  border-radius: 2px;
+  transition: var(--modal-transition);
+}
+
+.progreso-step.completado {
+  background: #06D6A0;
+}
+
+.progreso-step.activo {
+  background: #87CEEB;
+}
+
+/* Efectos de transición suaves para cambios de estado */
+.campo-input,
+.campo-select,
+.btn-cancelar,
+.btn-registrar {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Mejora visual para campos de fecha en navegadores webkit */
+.campo-input[type="date"]::-webkit-calendar-picker-indicator {
+  color: #06D6A0;
+  cursor: pointer;
+  filter: invert(0.5);
+}
+
+.campo-input[type="date"]::-webkit-calendar-picker-indicator:hover {
+  filter: invert(0.2);
+}
+
+/* Mejora visual para select */
+.campo-select {
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=US-ASCII,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'><path fill='%2306D6A0' d='M2 0L0 2h4zm0 5L0 3h4z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 12px;
+  padding-right: 40px;
+}
+
+/* Estados de carga para botones */
+.btn-registrar.cargando {
+  position: relative;
+  color: transparent;
+}
+
+.btn-registrar.cargando::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top: 2px solid white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}

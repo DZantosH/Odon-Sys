@@ -1,0 +1,384 @@
+/* ========================================
+   CSS COMPACTO PARA SISTEMA DE HORARIO DE ACCESO
+   ======================================== */
+
+/* Overlay principal para bloqueo de sistema */
+.sistema-bloqueado-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(135deg, #1e3a8a 0%, #3730a3 50%, #581c87 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding: 10px;
+  overflow-y: auto; /* 🆕 Permitir scroll */
+}
+
+/* Contenedor del mensaje de bloqueo - MÁS COMPACTO */
+.sistema-bloqueado-container {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 16px; /* 🆕 Menos redondeado */
+  padding: 25px; /* 🆕 Menos padding */
+  max-width: 450px; /* 🆕 Más estrecho */
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  animation: fadeInScale 0.5s ease-out;
+  margin: auto; /* 🆕 Para centrar en scroll */
+  max-height: 95vh; /* 🆕 Altura máxima */
+  overflow-y: auto; /* 🆕 Scroll interno si es necesario */
+}
+
+/* Animación de entrada */
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Icono principal del sistema bloqueado - MÁS PEQUEÑO */
+.sistema-bloqueado-icon {
+  font-size: 3rem; /* 🆕 Más pequeño */
+  margin-bottom: 15px; /* 🆕 Menos margen */
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05); /* 🆕 Menos pronunciado */
+  }
+}
+
+/* Título del mensaje - MÁS COMPACTO */
+.sistema-bloqueado-title {
+  font-size: 1.5rem; /* 🆕 Más pequeño */
+  font-weight: 700;
+  color: #1e3a8a;
+  margin-bottom: 10px; /* 🆕 Menos margen */
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Mensaje principal - MÁS COMPACTO */
+.sistema-bloqueado-message {
+  font-size: 1rem; /* 🆕 Más pequeño */
+  color: #374151;
+  margin-bottom: 15px; /* 🆕 Menos margen */
+  line-height: 1.4;
+}
+
+/* Reloj en tiempo real - MÁS COMPACTO */
+.sistema-bloqueado-reloj {
+  font-size: 2rem; /* 🆕 Más pequeño */
+  font-weight: 700;
+  color: #1e3a8a;
+  font-family: 'Monaco', 'Menlo', monospace;
+  margin: 15px 0; /* 🆕 Menos margen */
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  animation: tickTock 1s infinite;
+}
+
+@keyframes tickTock {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.02); /* 🆕 Menos pronunciado */
+  }
+}
+
+/* Estado info - MÁS COMPACTO */
+.sistema-bloqueado-estado {
+  padding: 8px 15px; /* 🆕 Menos padding */
+  border-radius: 6px;
+  margin: 10px 0; /* 🆕 Menos margen */
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 0.9rem; /* 🆕 Más pequeño */
+}
+
+.estado-error {
+  background: #fef2f2;
+  color: #dc2626;
+  border: 1px solid #fecaca;
+}
+
+.estado-advertencia {
+  background: #fffbeb;
+  color: #d97706;
+  border: 1px solid #fed7aa;
+}
+
+.estado-info {
+  background: #eff6ff;
+  color: #2563eb;
+  border: 1px solid #bfdbfe;
+}
+
+.estado-exito {
+  background: #f0fdf4;
+  color: #059669;
+  border: 1px solid #bbf7d0;
+}
+
+/* Información de horario - MÁS COMPACTA */
+.sistema-bloqueado-horario {
+  background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+  border-radius: 10px;
+  padding: 15px; /* 🆕 Menos padding */
+  margin: 15px 0; /* 🆕 Menos margen */
+  border-left: 3px solid #3b82f6;
+}
+
+.horario-info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 8px 0; /* 🆕 Menos margen */
+  font-weight: 600;
+}
+
+.horario-label {
+  color: #6b7280;
+  font-size: 0.85rem; /* 🆕 Más pequeño */
+}
+
+.horario-valor {
+  color: #1f2937;
+  font-size: 0.95rem; /* 🆕 Más pequeño */
+  font-family: 'Monaco', 'Menlo', monospace;
+}
+
+.horario-valor.bloqueado {
+  color: #dc2626;
+}
+
+.horario-valor.permitido {
+  color: #059669;
+}
+
+/* Contador regresivo - MÁS COMPACTO */
+.sistema-bloqueado-countdown {
+  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+  border: 1px solid #f59e0b;
+  border-radius: 8px;
+  padding: 12px; /* 🆕 Menos padding */
+  margin: 15px 0; /* 🆕 Menos margen */
+}
+
+.countdown-title {
+  font-size: 0.85rem; /* 🆕 Más pequeño */
+  color: #92400e;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.countdown-timer {
+  font-size: 1.3rem; /* 🆕 Más pequeño */
+  font-weight: 700;
+  color: #d97706;
+  font-family: 'Monaco', 'Menlo', monospace;
+}
+
+/* Botones - MÁS COMPACTOS */
+.sistema-bloqueado-acciones {
+  margin-top: 20px; /* 🆕 Menos margen */
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* 🆕 Menos gap */
+}
+
+.btn-reintentar {
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  color: white;
+  border: none;
+  padding: 10px 25px; /* 🆕 Menos padding */
+  border-radius: 25px;
+  font-size: 0.9rem; /* 🆕 Más pequeño */
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.btn-reintentar:hover {
+  background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(59, 130, 246, 0.4);
+}
+
+.btn-reintentar:active {
+  transform: translateY(0);
+}
+
+.btn-cerrar-sesion {
+  background: transparent;
+  color: #6b7280;
+  border: 2px solid #d1d5db;
+  padding: 8px 20px; /* 🆕 Menos padding */
+  border-radius: 25px;
+  font-size: 0.85rem; /* 🆕 Más pequeño */
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-cerrar-sesion:hover {
+  background: #f3f4f6;
+  border-color: #9ca3af;
+  color: #374151;
+}
+
+/* Información adicional - MÁS COMPACTA */
+.info-adicional {
+  margin-top: 15px; /* 🆕 Menos margen */
+  padding: 12px; /* 🆕 Menos padding */
+  background-color: rgba(243, 244, 246, 0.7);
+  border-radius: 6px;
+  font-size: 0.8rem; /* 🆕 Más pequeño */
+  color: #6b7280;
+  text-align: left;
+}
+
+.info-adicional ul {
+  margin: 6px 0;
+  padding-left: 16px;
+}
+
+.info-adicional li {
+  margin: 4px 0; /* 🆕 Menos margen entre elementos */
+}
+
+/* Responsividad mejorada */
+@media (max-width: 768px) {
+  .sistema-bloqueado-container {
+    padding: 20px;
+    margin: 10px;
+    max-width: 95%;
+  }
+  
+  .sistema-bloqueado-title {
+    font-size: 1.3rem;
+  }
+  
+  .sistema-bloqueado-reloj {
+    font-size: 1.8rem;
+  }
+  
+  .sistema-bloqueado-icon {
+    font-size: 2.5rem;
+  }
+  
+  .horario-info-row {
+    flex-direction: column;
+    gap: 3px;
+    text-align: center;
+  }
+  
+  .horario-label, .horario-valor {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .sistema-bloqueado-overlay {
+    padding: 5px;
+  }
+  
+  .sistema-bloqueado-container {
+    padding: 15px;
+    margin: 5px;
+    border-radius: 12px;
+  }
+  
+  .sistema-bloqueado-title {
+    font-size: 1.2rem;
+  }
+  
+  .sistema-bloqueado-message {
+    font-size: 0.9rem;
+  }
+  
+  .sistema-bloqueado-reloj {
+    font-size: 1.6rem;
+  }
+  
+  .sistema-bloqueado-icon {
+    font-size: 2.2rem;
+  }
+  
+  .countdown-timer {
+    font-size: 1.1rem;
+  }
+  
+  .info-adicional {
+    font-size: 0.75rem;
+  }
+}
+
+/* Para pantallas muy pequeñas en altura */
+@media (max-height: 600px) {
+  .sistema-bloqueado-container {
+    padding: 15px;
+    margin: 5px 10px;
+  }
+  
+  .sistema-bloqueado-icon {
+    font-size: 2rem;
+    margin-bottom: 10px;
+  }
+  
+  .sistema-bloqueado-title {
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+  }
+  
+  .sistema-bloqueado-reloj {
+    font-size: 1.5rem;
+    margin: 10px 0;
+  }
+  
+  .sistema-bloqueado-horario,
+  .sistema-bloqueado-countdown {
+    padding: 10px;
+    margin: 10px 0;
+  }
+  
+  .info-adicional {
+    display: none; /* 🆕 Ocultar en pantallas muy pequeñas */
+  }
+}
+
+/* Animaciones más suaves para mejor rendimiento */
+.loading-spinner {
+  width: 30px;
+  height: 30px;
+  border: 3px solid #f3f4f6;
+  border-top: 3px solid #3b82f6;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

@@ -1,0 +1,498 @@
+/* ========================================================
+   HISTORIAL PACIENTE - DISEÑO FULL WIDTH (EXPANDIDO)
+   Adaptado para: Móvil, Tablet, Laptop, TV
+   ======================================================== */
+
+:root {
+  --primary-gradient: linear-gradient(135deg, #06D6A0 0%, #87CEEB 100%);
+  --bg-color: #f4f6f9;
+  --card-bg: #ffffff;
+  --text-primary: #1e3a8a;
+  --text-secondary: #64748b;
+  --border-radius: 16px;
+}
+
+/* === CONTENEDOR PRINCIPAL === */
+.historial-container {
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--bg-color);
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 40px;
+  overflow-x: hidden;
+}
+
+/* ========================================================
+   1. HEADER DEL PACIENTE (TARJETA SUPERIOR)
+   ======================================================== */
+.header-paciente-minimalista {
+  background: var(--card-bg);
+  border-radius: var(--border-radius);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+  position: relative;
+  border: 1px solid #e2e8f0;
+  
+  /* CAMBIO CLAVE: Ocupar todo el ancho menos un margen pequeño */
+  margin: 20px; 
+  width: calc(100% - 40px);
+  max-width: none; /* Quitamos el límite de ancho */
+}
+
+.header-minimalista-content {
+  padding: 30px;
+  display: grid;
+  /* Estructura: Avatar | Info | Estadísticas */
+  grid-template-columns: auto 1fr auto; 
+  gap: 40px;
+  align-items: center;
+}
+
+/* Botón Regresar */
+.btn-regresar-minimalista {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: white;
+  border: 1px solid #e2e8f0;
+  padding: 8px 16px;
+  border-radius: 20px;
+  color: var(--text-secondary);
+  font-weight: 600;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.btn-regresar-minimalista:hover {
+  background: #f8fafc;
+  color: var(--text-primary);
+  transform: translateX(-3px);
+}
+
+/* Avatar */
+.avatar-container {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.avatar-paciente {
+  width: 140px; /* Un poco más grande para pantallas grandes */
+  height: 140px;
+  border-radius: 50%;
+  background: var(--primary-gradient);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 50px;
+  color: white;
+  font-weight: bold;
+  border: 5px solid white;
+  box-shadow: 0 10px 25px rgba(6, 214, 160, 0.25);
+  overflow: hidden;
+}
+
+.avatar-estado-online {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  width: 26px;
+  height: 26px;
+  background: #10b981;
+  border: 4px solid white;
+  border-radius: 50%;
+}
+
+/* Información Texto Central */
+.info-paciente-minimalista {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+}
+
+.nombre-paciente-principal {
+  font-size: 36px;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin: 0;
+  line-height: 1.2;
+}
+
+/* Grid de detalles (Expandido para llenar pantalla) */
+.detalles-paciente-grid-expandido {
+  display: grid;
+  /* Rellena el espacio horizontal automáticamente */
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  width: 100%;
+}
+
+.detalle-item-minimalista {
+  background: #f8fafc;
+  padding: 15px 20px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  border: 1px solid #f1f5f9;
+  transition: transform 0.2s;
+}
+
+.detalle-item-minimalista:hover {
+  transform: translateY(-2px);
+  border-color: #e2e8f0;
+  background: white;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+}
+
+.detalle-icono { font-size: 22px; }
+.detalle-contenido { display: flex; flex-direction: column; }
+.detalle-label { font-size: 11px; color: #94a3b8; text-transform: uppercase; font-weight: 700; letter-spacing: 0.5px; }
+.detalle-valor { font-size: 15px; color: #334155; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+/* Estadísticas (Derecha) */
+.estadisticas-paciente {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 140px; /* Asegura que no se aplasten */
+}
+
+.estadistica-card {
+  background: white;
+  border: 1px solid #e2e8f0;
+  padding: 15px;
+  border-radius: 12px;
+  text-align: center;
+  transition: all 0.2s;
+  cursor: default;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.estadistica-card:hover {
+  transform: translateY(-3px);
+  border-color: #87CEEB;
+  box-shadow: 0 4px 12px rgba(135, 206, 235, 0.15);
+}
+
+.estadistica-numero { display: block; font-size: 28px; font-weight: 800; color: #06D6A0; line-height: 1; margin-bottom: 4px; }
+.estadistica-label { font-size: 11px; color: #64748b; font-weight: 700; letter-spacing: 1px; }
+
+
+/* ========================================================
+   2. BARRA DE NAVEGACIÓN (FULL WIDTH)
+   ======================================================== */
+.navegacion-principal {
+  /* Ocupa todo el ancho menos margen */
+  margin: 0 20px 20px 20px;
+  width: calc(100% - 40px);
+  max-width: none;
+  
+  background: white;
+  padding: 10px;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+  display: flex;
+  gap: 10px;
+  
+  /* Scroll en móvil */
+  overflow-x: auto; 
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.navegacion-principal::-webkit-scrollbar { display: none; }
+
+.nav-tab {
+  flex: 1; /* Distribución equitativa en pantalla grande */
+  min-width: fit-content;
+  padding: 15px 24px;
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  border-radius: 12px;
+  white-space: nowrap;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.nav-tab:hover {
+  background: #f1f5f9;
+  color: var(--text-primary);
+}
+
+.nav-tab.activo {
+  background: var(--primary-gradient);
+  color: white;
+  box-shadow: 0 4px 12px rgba(6, 214, 160, 0.3);
+}
+
+/* Badge contador */
+.nav-tab[data-count]::after {
+  content: attr(data-count);
+  background: rgba(255,255,255,0.25);
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-size: 12px;
+  margin-left: 6px;
+}
+
+.nav-tab:not(.activo)[data-count]::after {
+  background: #e2e8f0;
+  color: var(--text-secondary);
+}
+
+/* ========================================================
+   3. CONTENIDO PRINCIPAL (FULL WIDTH)
+   ======================================================== */
+.contenido-principal {
+  margin: 0 20px 20px 20px;
+  width: calc(100% - 40px);
+  max-width: none;
+  flex: 1;
+}
+
+/* ========================================================
+   MEDIA QUERIES (ADAPTACIÓN)
+   ======================================================== */
+
+/* --- TABLET / IPAD VERTICAL (Max 1024px) --- */
+@media (max-width: 1024px) {
+  .header-minimalista-content {
+    grid-template-columns: 1fr; /* Cambia a columna para tablets verticales */
+    text-align: center;
+    justify-items: center;
+    gap: 20px;
+  }
+
+  .info-paciente-minimalista {
+    align-items: center;
+  }
+
+  .btn-regresar-minimalista {
+    position: static;
+    margin-bottom: 10px;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .estadisticas-paciente {
+    flex-direction: row;
+    width: 100%;
+    justify-content: center;
+    gap: 15px;
+  }
+  
+  .estadistica-card {
+    flex: 1;
+  }
+}
+
+/* --- MÓVIL (Max 768px) --- */
+@media (max-width: 768px) {
+  .historial-container {
+    padding-bottom: 20px;
+  }
+
+  /* Márgenes más pequeños en celular */
+  .header-paciente-minimalista,
+  .navegacion-principal,
+  .contenido-principal {
+    margin: 10px;
+    width: calc(100% - 20px);
+  }
+
+  .header-minimalista-content {
+    padding: 20px 15px;
+    gap: 20px;
+  }
+
+  .avatar-paciente {
+    width: 100px;
+    height: 100px;
+    font-size: 36px;
+  }
+
+  .nombre-paciente-principal {
+    font-size: 24px;
+  }
+
+  /* Grid de detalles: 1 columna en móvil */
+  .detalles-paciente-grid-expandido {
+    grid-template-columns: 1fr; 
+  }
+
+  /* Estadísticas: Grid 2x2 */
+  .estadisticas-paciente {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+  }
+
+  /* Navegación deslizable (Touch) */
+  .navegacion-principal {
+    justify-content: flex-start;
+    padding: 10px;
+  }
+
+  .nav-tab {
+    flex: 0 0 auto; /* No encoger */
+    padding: 10px 16px;
+    font-size: 13px;
+  }
+}
+
+/* ========================================================
+   CORRECCIONES PARA SECCIONES INTERNAS (RADIOGRAFÍAS, ESTUDIOS, CITAS)
+   ======================================================== */
+
+/* Hacer que el contenedor de la sección ocupe el 100% */
+.seccion-completa-radiografias,
+.seccion-completa-estudios,
+.seccion-completa {
+  width: 100% !important;
+  max-width: none !important;
+  box-sizing: border-box;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+  margin-bottom: 30px;
+  padding: 25px; /* Padding interno cómodo */
+}
+
+/* Headers de las secciones internas */
+.seccion-header-radiografias,
+.seccion-header-estudios,
+.seccion-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap; /* Permitir que bajen en celular */
+  gap: 15px;
+  margin-bottom: 25px;
+  border-bottom: 1px solid #f1f5f9;
+  padding-bottom: 15px;
+}
+
+/* Grids de tarjetas (Radiografías y Estudios) */
+.radiografias-grid-compacto,
+.estudios-grid-compacto,
+.citas-lista-compacta {
+  display: grid;
+  /* PC: Columnas automáticas de mínimo 300px */
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 20px;
+  width: 100%;
+}
+
+/* Tarjetas individuales */
+.tarjeta-radiografia-compacta,
+.tarjeta-estudio-compacta,
+.cita-item-compacto {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 20px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.tarjeta-radiografia-compacta:hover,
+.tarjeta-estudio-compacta:hover,
+.cita-item-compacto:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+  background: white;
+  border-color: #cbd5e1;
+}
+
+/* Botones de acción dentro de las tarjetas */
+.tarjeta-acciones-compacta,
+.cita-acciones-compactas {
+  display: flex;
+  gap: 10px;
+  margin-top: auto; /* Empujar al fondo */
+}
+
+.btn-compacto,
+.btn-detalle-compacto,
+.btn-estado-compacto {
+  flex: 1;
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  text-align: center;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+/* Colores de botones */
+.btn-detalles-compacto { background: #e2e8f0; color: #475569; }
+.btn-subir-compacto { background: #06D6A0; color: white; }
+.btn-ver-imagen { background: #3b82f6; color: white; }
+
+/* ========================================================
+   RESPONSIVE PARA MÓVIL (AJUSTES FINOS)
+   ======================================================== */
+@media (max-width: 768px) {
+  
+  /* Quitar padding extra en móvil */
+  .seccion-completa-radiografias,
+  .seccion-completa-estudios,
+  .seccion-completa {
+    padding: 15px;
+    border-radius: 0; /* Borde cuadrado en móvil se ve mejor a veces */
+    box-shadow: none; /* Menos ruido visual */
+    background: transparent; /* Fondo gris del padre */
+  }
+
+  /* Headers en columna */
+  .seccion-header-radiografias,
+  .seccion-header-estudios,
+  .seccion-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  /* Botón "Solicitar Nuevo" ancho completo */
+  .btn-accion-radiografias,
+  .btn-accion-estudios {
+    width: 100%;
+    justify-content: center;
+    padding: 12px;
+  }
+
+  /* Grids a 1 columna */
+  .radiografias-grid-compacto,
+  .estudios-grid-compacto,
+  .citas-lista-compacta {
+    grid-template-columns: 1fr;
+  }
+
+  /* Tarjetas blancas en móvil */
+  .tarjeta-radiografia-compacta,
+  .tarjeta-estudio-compacta,
+  .cita-item-compacto {
+    background: white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+  }
+}

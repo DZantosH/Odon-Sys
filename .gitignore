@@ -1,0 +1,41 @@
+
+# Variables de entorno
+
+.env
+
+.env.*
+
+# Node modules
+
+node_modules/
+
+npm-debug.log
+
+yarn-error.log
+
+# Logs
+
+logs/
+
+*.log
+
+# Archivos temporales
+
+temp_audio_*
+
+*.tmp
+
+*.ogg
+
+*.mp3
+
+# PM2
+
+.pm2/
+
+# Sistema
+
+.DS_Store
+
+Thumbs.db
+

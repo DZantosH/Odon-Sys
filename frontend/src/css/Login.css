@@ -1,0 +1,165 @@
+/* frontend/src/css/Login.css */
+
+/* Variables de color estilo Tailwind */
+:root {
+  --slate-50: #f8fafc;
+  --slate-100: #f1f5f9;
+  --slate-200: #e2e8f0;
+  --slate-300: #cbd5e1;
+  --slate-400: #94a3b8;
+  --slate-500: #64748b;
+  --slate-600: #475569;
+  --slate-700: #334155;
+  --slate-800: #1e293b;
+  --slate-900: #0f172a;
+
+  /* Color Principal (Teal para Doctores) */
+  --teal-500: #14b8a6;
+  --teal-600: #0d9488;
+  --teal-700: #0f766e;
+  
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+.login-page-modern {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--slate-50);
+  font-family: system-ui, -apple-system, sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Fondo animado */
+.login-bg-animated {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: 0;
+  background: radial-gradient(circle at 15% 50%, rgba(20, 184, 166, 0.08), transparent 25%),
+              radial-gradient(circle at 85% 30%, rgba(59, 130, 246, 0.08), transparent 25%);
+}
+
+.bg-bubble {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(20, 184, 166, 0.1);
+  animation: float 6s infinite ease-in-out;
+}
+.bg-bubble-1 { width: 100px; height: 100px; top: 10%; left: 10%; animation-delay: 0s; }
+.bg-bubble-2 { width: 150px; height: 150px; bottom: 20%; right: 10%; animation-delay: 2s; }
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+/* Contenedor del Login */
+.max-w-md {
+  width: 100%;
+  max-width: 28rem; /* aprox 450px */
+  position: relative;
+  z-index: 10;
+}
+
+/* Tarjeta Blanca */
+.bg-white {
+  background-color: white;
+  border-radius: 1rem;
+  padding: 2.5rem;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--slate-100);
+}
+
+.text-center { text-align: center; }
+
+/* Icono y Títulos */
+.rounded-full { border-radius: 9999px; }
+.shadow-lg { box-shadow: var(--shadow-lg); }
+.mx-auto { margin-left: auto; margin-right: auto; }
+.mb-4 { margin-bottom: 1rem; }
+.h-16 { height: 4rem; }
+.w-16 { width: 4rem; }
+.flex { display: flex; }
+.items-center { align-items: center; }
+.justify-center { justify-content: center; }
+
+.bg-teal-500 { background-color: var(--teal-500); }
+.text-gray-900 { color: var(--slate-900); }
+.text-3xl { font-size: 1.875rem; line-height: 2.25rem; }
+.font-bold { font-weight: 700; }
+.text-sm { font-size: 0.875rem; line-height: 1.25rem; }
+.text-gray-600 { color: var(--slate-600); }
+.mt-2 { margin-top: 0.5rem; }
+
+/* Inputs */
+.space-y-5 > * + * { margin-top: 1.25rem; }
+.block { display: block; }
+.font-medium { font-weight: 500; }
+.text-gray-700 { color: var(--slate-700); }
+.mb-2 { margin-bottom: 0.5rem; }
+
+input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--slate-300);
+  background-color: white;
+  font-size: 0.95rem;
+  transition: all 0.2s;
+  box-sizing: border-box; /* IMPORTANTE para que no se salga */
+}
+
+input:focus {
+  outline: none;
+  border-color: var(--teal-500);
+  box-shadow: 0 0 0 3px rgba(20, 184, 166, 0.2);
+}
+
+/* Botón Ojo (Password) */
+.relative { position: relative; }
+.absolute { position: absolute; }
+.inset-y-0 { top: 0; bottom: 0; }
+.right-0 { right: 0; }
+.pr-3 { padding-right: 0.75rem; }
+.pr-12 { padding-right: 3rem; } /* Espacio para el icono */
+
+button.cursor-pointer { cursor: pointer; background: none; border: none; }
+
+/* Botón Entrar */
+.pt-4 { padding-top: 1rem; }
+
+button[type="submit"] {
+  width: 100%;
+  padding: 0.875rem;
+  background-color: var(--teal-600);
+  color: white;
+  font-weight: 600;
+  border-radius: 0.5rem;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  box-shadow: var(--shadow-md);
+}
+
+button[type="submit"]:hover {
+  background-color: var(--teal-700);
+}
+
+button[type="submit"]:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Alertas */
+.bg-red-50 { background-color: #fef2f2; }
+.border-red-500 { border-color: #ef4444; }
+.text-red-700 { color: #b91c1c; }
+.text-red-500 { color: #ef4444; }
+.border-l-4 { border-left-width: 4px; border-style: solid; }
+.p-4 { padding: 1rem; }
+.gap-3 { gap: 0.75rem; }
+.rounded-md { border-radius: 0.375rem; }

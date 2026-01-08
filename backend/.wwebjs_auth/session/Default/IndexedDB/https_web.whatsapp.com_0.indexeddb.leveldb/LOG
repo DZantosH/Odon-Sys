@@ -1,0 +1,37 @@
+2025/12/28-19:28:55.321 255a Reusing MANIFEST /home/dhaws/odon-sys-local/odon-sys/backend/.wwebjs_auth/session/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
+2025/12/28-19:28:55.321 255a Recovering log #125
+2025/12/28-19:28:55.333 255a Reusing old log /home/dhaws/odon-sys-local/odon-sys/backend/.wwebjs_auth/session/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/000125.log 
+2025/12/28-19:28:56.379 2564 Level-0 table #131: started
+2025/12/28-19:28:56.384 2564 Level-0 table #131: 523349 bytes OK
+2025/12/28-19:28:56.385 2564 Delete type=0 #125
+2025/12/28-19:28:56.386 2564 Manual compaction at level-0 from '\x000\x00\x00\x00' @ 72057594037927935 : 1 .. '\x001\x00\x00\x00' @ 0 : 0; will stop at (end)
+2025/12/28-19:28:56.403 255a Compacting 1@1 + 2@2 files
+2025/12/28-19:28:56.434 255a Generated table #132@1: 53694 keys, 2234798 bytes
+2025/12/28-19:28:56.447 255a Generated table #133@1: 29608 keys, 872878 bytes
+2025/12/28-19:28:56.447 255a Compacted 1@1 + 2@2 files => 3107676 bytes
+2025/12/28-19:28:56.448 255a compacted to: files[ 0 0 2 0 0 0 0 ]
+2025/12/28-19:28:56.449 255a Delete type=2 #128
+2025/12/28-19:28:56.449 255a Delete type=2 #127
+2025/12/28-19:28:56.449 255a Delete type=2 #131
+2025/12/28-19:29:02.108 255a Level-0 table #135: started
+2025/12/28-19:29:02.118 255a Level-0 table #135: 1179170 bytes OK
+2025/12/28-19:29:02.119 255a Delete type=0 #130
+2025/12/28-19:29:02.552 255a Compacting 1@1 + 2@2 files
+2025/12/28-19:29:02.575 255a Generated table #136@1: 55427 keys, 2232646 bytes
+2025/12/28-19:29:02.588 255a Generated table #137@1: 33523 keys, 1157123 bytes
+2025/12/28-19:29:02.588 255a Compacted 1@1 + 2@2 files => 3389769 bytes
+2025/12/28-19:29:02.589 255a compacted to: files[ 0 0 2 0 0 0 0 ]
+2025/12/28-19:29:02.589 255a Delete type=2 #135
+2025/12/28-19:29:02.589 255a Delete type=2 #133
+2025/12/28-19:29:02.589 255a Delete type=2 #132
+2025/12/28-23:18:56.975 255a Level-0 table #139: started
+2025/12/28-23:18:56.985 255a Level-0 table #139: 1101025 bytes OK
+2025/12/28-23:18:56.986 255a Delete type=0 #134
+2025/12/28-23:28:57.258 255a Compacting 1@1 + 2@2 files
+2025/12/28-23:28:57.282 255a Generated table #140@1: 57126 keys, 2238281 bytes
+2025/12/28-23:28:57.295 255a Generated table #141@1: 34528 keys, 1260631 bytes
+2025/12/28-23:28:57.295 255a Compacted 1@1 + 2@2 files => 3498912 bytes
+2025/12/28-23:28:57.296 255a compacted to: files[ 0 0 2 0 0 0 0 ]
+2025/12/28-23:28:57.296 255a Delete type=2 #139
+2025/12/28-23:28:57.296 255a Delete type=2 #137
+2025/12/28-23:28:57.296 255a Delete type=2 #136

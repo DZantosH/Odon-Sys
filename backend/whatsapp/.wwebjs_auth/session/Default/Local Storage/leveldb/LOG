@@ -1,0 +1,33 @@
+2025/12/16-19:44:07.807 1c3e49 Reusing MANIFEST /var/www/odon-sys/backend/whatsapp/.wwebjs_auth/session/Default/Local Storage/leveldb/MANIFEST-000001
+2025/12/16-19:44:07.808 1c3e49 Recovering log #3
+2025/12/16-19:44:07.809 1c3e49 Reusing old log /var/www/odon-sys/backend/whatsapp/.wwebjs_auth/session/Default/Local Storage/leveldb/000003.log 
+2025/12/17-06:54:57.514 1d1c42 Level-0 table #5: started
+2025/12/17-06:54:57.523 1d1c42 Level-0 table #5: 16520 bytes OK
+2025/12/17-06:54:57.530 1d1c42 Delete type=0 #3
+2025/12/17-16:41:56.298 1d73e5 Level-0 table #7: started
+2025/12/17-16:41:56.304 1d73e5 Level-0 table #7: 14563 bytes OK
+2025/12/17-16:41:56.307 1d73e5 Delete type=0 #4
+2025/12/18-10:06:12.134 1e1119 Level-0 table #9: started
+2025/12/18-10:06:12.141 1e1119 Level-0 table #9: 13890 bytes OK
+2025/12/18-10:06:12.146 1e1119 Delete type=0 #6
+2025/12/18-21:46:42.568 1e4d2e Level-0 table #11: started
+2025/12/18-21:46:42.575 1e4d2e Level-0 table #11: 12571 bytes OK
+2025/12/18-21:46:42.579 1e4d2e Delete type=0 #8
+2025/12/19-17:47:48.324 1ebae2 Level-0 table #13: started
+2025/12/19-17:47:48.333 1ebae2 Level-0 table #13: 14339 bytes OK
+2025/12/19-17:47:48.336 1ebae2 Delete type=0 #10
+2025/12/20-20:49:00.038 1f91e3 Level-0 table #15: started
+2025/12/20-20:49:00.046 1f91e3 Level-0 table #15: 13012 bytes OK
+2025/12/20-20:49:00.050 1f91e3 Delete type=0 #12
+2025/12/20-20:49:00.052 1f91e3 Compacting 4@0 + 1@1 files
+2025/12/20-20:49:00.059 1f91e3 Generated table #16@0: 14 keys, 2140 bytes
+2025/12/20-20:49:00.059 1f91e3 Compacted 4@0 + 1@1 files => 2140 bytes
+2025/12/20-20:49:00.060 1f91e3 compacted to: files[ 0 1 1 0 0 0 0 ]
+2025/12/20-20:49:00.061 1f91e3 Delete type=2 #15
+2025/12/20-20:49:00.061 1f91e3 Delete type=2 #7
+2025/12/20-20:49:00.061 1f91e3 Delete type=2 #13
+2025/12/20-20:49:00.061 1f91e3 Delete type=2 #9
+2025/12/20-20:49:00.061 1f91e3 Delete type=2 #11
+2025/12/22-08:50:37.766 20582a Level-0 table #18: started
+2025/12/22-08:50:37.773 20582a Level-0 table #18: 12442 bytes OK
+2025/12/22-08:50:37.776 20582a Delete type=0 #14

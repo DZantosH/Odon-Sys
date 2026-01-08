@@ -1,0 +1,532 @@
+/* ===== CITAS DEL DÍA - CSS COMPLETO CORREGIDO ===== */
+
+/* Variables globales para consistencia */
+:root {
+  --primary-color: #06D6A0;
+  --secondary-color: #87CEEB;
+  --dark-color: #1E3A8A;
+  --light-color: #F8FAFC;
+  --white: #FFFFFF;
+  --shadow-sm: 0 1px 3px rgba(30, 58, 138, 0.1);
+  --shadow-md: 0 4px 6px rgba(30, 58, 138, 0.1);
+  --shadow-lg: 0 10px 15px rgba(30, 58, 138, 0.1);
+  --border-radius: 12px;
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ===== LISTA DE CITAS ===== */
+.citas-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-right: 4px;
+  max-height: 100%;
+  min-height: 0;
+}
+
+/* ===== TARJETAS DE CITAS ===== */
+.cita-card {
+  display: grid;
+  grid-template-columns: 80px 1fr auto auto;
+  gap: 16px;
+  align-items: center;
+  padding: 16px;
+  background: rgba(6, 214, 160, 0.05);
+  border: 1px solid rgba(6, 214, 160, 0.2);
+  border-radius: var(--border-radius);
+  transition: var(--transition);
+  position: relative;
+  flex-shrink: 0;
+  min-height: 70px;
+  max-height: 90px;
+  will-change: transform;
+}
+
+.cita-card:hover {
+  background: rgba(6, 214, 160, 0.1);
+  border-color: var(--primary-color);
+  transform: translateX(6px);
+  box-shadow: 0 8px 24px rgba(6, 214, 160, 0.2);
+}
+
+/* ===== TIEMPO DE CITA ===== */
+.cita-time {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  min-width: 80px;
+}
+
+.time-text {
+  font-size: 16px !important;
+  font-weight: 800 !important;
+  color: #000000 !important;
+  font-family: 'Monaco', 'Menlo', 'Courier New', monospace !important;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8) !important;
+  background: rgba(255, 255, 255, 0.95) !important;
+  padding: 6px 10px !important;
+  border-radius: 6px !important;
+  border: 1px solid #e2e8f0 !important;
+  line-height: 1.2 !important;
+  letter-spacing: 0.5px !important;
+}
+
+/* ===== INFORMACIÓN DEL PACIENTE ===== */
+.cita-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.cita-patient {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.patient-name {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--dark-color);
+  line-height: 1.2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cita-type {
+  font-size: 12px;
+  color: var(--secondary-color);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ===== ESTADO DE CITA ===== */
+.cita-status {
+  display: flex;
+  align-items: center;
+}
+
+.status-badge {
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: capitalize;
+  white-space: nowrap;
+}
+
+/* ===== ACCIONES ===== */
+.cita-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.action-btn {
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+  font-size: 14px;
+  will-change: transform;
+}
+
+.action-btn:hover {
+  transform: scale(1.1);
+}
+
+/* Estados específicos de botones */
+.action-btn-delete {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  color: white;
+}
+
+.action-btn-delete:hover {
+  background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+}
+
+.action-btn-start {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: white;
+}
+
+.action-btn-start:hover {
+  background: linear-gradient(135deg, #059669 0%, #047857 100%);
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+.action-btn-continue {
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  color: white;
+}
+
+.action-btn-continue:hover {
+  background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+.action-btn-complete {
+  background: #9ca3af;
+  color: white;
+  cursor: not-allowed;
+}
+
+.action-btn-complete:disabled {
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+.action-btn-edit {
+  background: var(--secondary-color);
+  color: white;
+}
+
+.action-btn-edit:hover {
+  background: var(--primary-color);
+  transform: scale(1.1);
+}
+
+/* ===== ESTADO VACÍO ===== */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  text-align: center;
+  gap: 16px;
+  flex: 1;
+  height: 100%;
+}
+
+.empty-state-icon {
+  font-size: 48px;
+  opacity: 0.5;
+  color: var(--secondary-color);
+}
+
+.empty-state-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--dark-color);
+}
+
+.empty-state-subtitle {
+  font-size: 14px;
+  color: var(--secondary-color);
+  max-width: 280px;
+  line-height: 1.5;
+}
+
+.empty-state-action {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: var(--transition);
+  margin-top: 16px;
+}
+
+.empty-state-action:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(6, 214, 160, 0.3);
+}
+
+/* ===== LOADING ===== */
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  gap: 16px;
+  flex: 1;
+  height: 100%;
+}
+
+.loading-spinner {
+  width: 32px;
+  height: 32px;
+  border: 3px solid rgba(6, 214, 160, 0.2);
+  border-top: 3px solid var(--primary-color);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { 
+    transform: rotate(0deg); 
+  }
+  100% { 
+    transform: rotate(360deg); 
+  }
+}
+
+.loading-text {
+  color: var(--dark-color);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* ===== SCROLL PERSONALIZADO ===== */
+.citas-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.citas-list::-webkit-scrollbar-track {
+  background: rgba(6, 214, 160, 0.1);
+  border-radius: 3px;
+}
+
+.citas-list::-webkit-scrollbar-thumb {
+  background: rgba(6, 214, 160, 0.3);
+  border-radius: 3px;
+}
+
+.citas-list::-webkit-scrollbar-thumb:hover {
+  background: rgba(6, 214, 160, 0.5);
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+
+/* Tablets (768px - 1024px) */
+@media (max-width: 1024px) {
+  .cita-card {
+    grid-template-columns: 70px 1fr auto auto;
+    padding: 14px;
+  }
+  
+  .time-text {
+    font-size: 15px !important;
+    padding: 5px 8px !important;
+  }
+  
+  .patient-name {
+    font-size: 14px;
+  }
+}
+
+/* Móviles (hasta 768px) */
+@media (max-width: 768px) {
+  .cita-card {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    text-align: center;
+    padding: 14px;
+    min-height: 100px;
+    max-height: 120px;
+  }
+  
+  .cita-actions {
+    justify-content: center;
+  }
+  
+  .time-text {
+    font-size: 14px !important;
+    padding: 5px 8px !important;
+  }
+  
+  .patient-name {
+    font-size: 14px;
+    white-space: normal;
+  }
+  
+  .cita-type {
+    white-space: normal;
+  }
+  
+  .cita-info {
+    text-align: center;
+  }
+  
+  .cita-status {
+    justify-content: center;
+  }
+  
+  .empty-state-icon {
+    font-size: 40px;
+  }
+  
+  .empty-state-title {
+    font-size: 16px;
+  }
+}
+
+/* Móviles pequeños (hasta 480px) */
+@media (max-width: 480px) {
+  .cita-card {
+    padding: 12px;
+    min-height: 90px;
+    max-height: 110px;
+  }
+  
+  .time-text {
+    font-size: 13px !important;
+    padding: 4px 6px !important;
+  }
+  
+  .patient-name {
+    font-size: 13px;
+  }
+  
+  .cita-type {
+    font-size: 11px;
+  }
+  
+  .status-badge {
+    font-size: 10px;
+    padding: 4px 8px;
+  }
+  
+  .action-btn {
+    width: 28px;
+    height: 28px;
+    font-size: 12px;
+  }
+  
+  .empty-state-icon {
+    font-size: 36px;
+  }
+  
+  .empty-state-title {
+    font-size: 15px;
+  }
+  
+  .empty-state-subtitle {
+    font-size: 13px;
+  }
+}
+
+/* ===== OPTIMIZACIONES ADICIONALES ===== */
+
+/* Transiciones suaves para todos los elementos */
+.cita-card * {
+  transition: var(--transition);
+}
+
+/* Asegurar que las citas no se desborden */
+.citas-list {
+  contain: layout style;
+}
+
+/* Mejorar el rendimiento */
+.cita-card {
+  contain: layout style paint;
+}
+
+/* Estados de hover mejorados */
+.cita-card:hover .patient-name {
+  color: var(--primary-color);
+}
+
+.cita-card:hover .time-text {
+  transform: scale(1.05);
+}
+
+/* Estilos para pantallas muy pequeñas */
+@media (max-width: 360px) {
+  .cita-card {
+    padding: 10px;
+    gap: 8px;
+  }
+  
+  .action-btn {
+    width: 24px;
+    height: 24px;
+    font-size: 10px;
+  }
+  
+  .time-text {
+    font-size: 12px !important;
+    padding: 3px 5px !important;
+  }
+}
+
+/* Modo oscuro (preparado para futuro) */
+@media (prefers-color-scheme: dark) {
+  .cita-card {
+    background: rgba(6, 214, 160, 0.1);
+    border-color: rgba(6, 214, 160, 0.3);
+  }
+  
+  .patient-name {
+    color: #e2e8f0;
+  }
+  
+  .loading-text {
+    color: #e2e8f0;
+  }
+}
+
+/* Contenedor principal de la tarjeta de Citas de Hoy */
+.citas-hoy,                /* si usas este nombre */
+.citas-panel .card,        /* o tu wrapper principal dentro de .citas-panel */
+.citas-panel .panel-card,  /* agrega el selector que corresponda a tu card */
+.citas-panel .panel {      /* de respaldo si usas .panel */
+  width: 100% !important;
+  max-width: none !important;    /* <- clave: NO limitar ancho */
+  min-width: 0 !important;
+}
+
+/* El body/lista también debe poder crecer a lo ancho */
+.citas-panel .card-body,
+.citas-panel .panel-content,
+.citas-panel .citas-list {
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+}
+
+/* Evitamos alturas fijas que dejen huecos en stacking */
+.citas-panel,
+.citas-panel .card,
+.citas-panel .panel,
+.citas-panel .panel-content {
+  height: auto !important;
+  max-height: none !important;
+  overflow: visible !important;
+}
+
+/* En móviles/tablets damos un poquito más de aire */
+@media (max-width: 900px){
+  .citas-panel .card,
+  .citas-panel .panel{
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+}
+/* En desktop: la tarjeta crece y solo la lista scrollea si hace falta */
+@media (min-width: 1367px){
+  .citas-list{
+    max-height: 60vh !important;   /* altura cómoda de la lista */
+    overflow-y: auto !important;
+    overscroll-behavior: contain;
+  }
+}
+
+/* Si quieres aún más contenido visible en pantallas muy grandes */
+@media (min-width: 1920px){
+  .citas-list{ max-height: 66vh !important; }
+}

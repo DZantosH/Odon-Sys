@@ -1,0 +1,250 @@
+/* ===== PACIENTES RESPONSIVE (Actualizado) ===== */
+
+:root {
+  --primary-gradient: linear-gradient(135deg, #06D6A0 0%, #87CEEB 100%);
+}
+
+/* Contenedor principal sin padding superior excesivo */
+.pacientes-container-moderno {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  height: 100%;
+}
+
+/* Header */
+.pacientes-header-moderno {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  padding: 15px 20px;
+  border-radius: 16px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.header-left h1 {
+  margin: 0;
+  font-size: 24px;
+  color: #1e3a8a;
+  font-weight: 700;
+}
+
+/* Botones y controles */
+.btn-regresar-panel {
+  background: #f1f5f9;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #64748b;
+  font-weight: 600;
+}
+
+.btn-registrar-paciente {
+  background: var(--primary-gradient);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(6, 214, 160, 0.3);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Filtros */
+.controles-pacientes {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.busqueda-container-moderno {
+  flex: 1;
+  position: relative;
+  min-width: 250px;
+}
+
+.busqueda-input-moderno {
+  width: 100%;
+  padding: 12px 15px 12px 40px;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  font-size: 14px;
+}
+
+.busqueda-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #94a3b8;
+}
+
+.orden-select {
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  background: white;
+  cursor: pointer;
+}
+
+/* === TABLA DESKTOP === */
+.tabla-container {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+  flex: 1;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.tabla-header {
+  display: grid;
+  grid-template-columns: 2fr 2fr 1fr 1.5fr 1fr 1.5fr;
+  padding: 15px 20px;
+  background: #f8fafc;
+  font-weight: bold;
+  color: #64748b;
+  font-size: 13px;
+  text-transform: uppercase;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.tabla-scroll {
+  overflow-y: auto;
+  flex: 1;
+}
+
+.tabla-fila {
+  display: grid;
+  grid-template-columns: 2fr 2fr 1fr 1.5fr 1fr 1.5fr;
+  padding: 15px 20px;
+  border-bottom: 1px solid #f1f5f9;
+  align-items: center;
+  transition: background 0.2s;
+}
+
+.tabla-fila:hover {
+  background-color: #f8fafc;
+}
+
+.header-centrado, .celda-accion {
+  text-align: center;
+  justify-content: center;
+}
+
+/* Badges */
+.badge-tipo { padding: 4px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; text-transform: uppercase; }
+.badge-activo { background: #dcfce7; color: #166534; }
+.badge-temporal { background: #eff6ff; color: #1e40af; }
+
+/* Botones Acción */
+.celda-accion { display: flex; gap: 8px; }
+.btn-icon { width: 36px; height: 36px; border: none; border-radius: 8px; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 16px; transition: transform 0.2s; }
+.btn-historial { background: #e0f2fe; color: #0284c7; }
+.btn-editar { background: #f0fdf4; color: #16a34a; }
+.btn-convertir { background: #fef3c7; color: #d97706; }
+.btn-icon:hover { transform: scale(1.1); }
+
+/* Estadisticas */
+.estadistica-item {
+  font-size: 13px;
+  font-weight: 600;
+  color: #64748b;
+  background: #f1f5f9;
+  padding: 5px 10px;
+  border-radius: 12px;
+}
+
+/* Loading & Empty */
+.loading-moderno { display: flex; flex-direction: column; align-items: center; padding: 40px; gap: 10px; color: #64748b; }
+.loading-spinner { width: 30px; height: 30px; border: 3px solid #e2e8f0; border-top: 3px solid #3b82f6; border-radius: 50%; animation: spin 1s linear infinite; }
+.tabla-vacia { padding: 40px; text-align: center; color: #94a3b8; }
+@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+
+/* =========================================================
+   MEDIA QUERY: TABLETS Y MÓVILES (< 1024px)
+   TRANSFORMACIÓN A TARJETAS
+   ========================================================= */
+@media (max-width: 1024px) {
+  
+  .pacientes-header-moderno {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .header-right {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  /* Ocultar encabezado de tabla */
+  .tabla-header { display: none; }
+
+  /* Filas como Tarjetas */
+  .tabla-fila {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    margin: 10px 15px;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+    gap: 10px;
+    background: white;
+  }
+
+  /* Etiquetas automáticas usando data-label */
+  .celda-nombre::before { content: "Nombre"; display: block; font-size: 11px; color: #94a3b8; text-transform: uppercase; }
+  .celda-apellido::before { content: "Apellidos"; display: block; font-size: 11px; color: #94a3b8; text-transform: uppercase; }
+  .celda-edad::before { content: "Edad"; font-weight: bold; color: #64748b; margin-right: 10px;}
+  .celda-telefono::before { content: "Teléfono"; font-weight: bold; color: #64748b; margin-right: 10px;}
+  .celda-tipo::before { content: "Estado"; font-weight: bold; color: #64748b; margin-right: 10px;}
+
+  /* Estilos específicos para celdas en tarjeta */
+  .celda-nombre { font-size: 18px; font-weight: bold; color: #1e3a8a; order: 1; }
+  .celda-apellido { font-size: 16px; color: #475569; order: 2; margin-bottom: 10px; border-bottom: 1px solid #f1f5f9; padding-bottom: 10px; }
+  
+  /* Flex para filas de datos */
+  .celda-edad, .celda-telefono, .celda-tipo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    order: 3;
+    font-size: 14px;
+  }
+
+  .celda-accion {
+    margin-top: 15px;
+    justify-content: space-between; /* Botones expandidos */
+    width: 100%;
+    order: 4;
+    border-top: 1px solid #f1f5f9;
+    padding-top: 15px;
+  }
+  
+  .btn-icon {
+    flex: 1; /* Botones ocupan espacio igual */
+    max-width: none;
+    height: 40px;
+    border-radius: 8px;
+  }
+}
